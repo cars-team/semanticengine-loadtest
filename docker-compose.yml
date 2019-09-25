@@ -21,13 +21,41 @@ services:
           memory: 4G
           
 
-  locust:
+  locust-master:
     build: ./locust
     image: locust:01
-    container_name: locust-cont
+    container_name: locust-master
     ports:
       - 5557:5557
       - 8089:8089
+    networks:
+      - sac20_net
+
+  locust-slave01:
+    build: ./locust
+    image: locust:01
+    container_name: locust-master
+    networks:
+      - sac20_net
+
+  locust-slave02:
+    build: ./locust
+    image: locust:01
+    container_name: locust-master
+    networks:
+      - sac20_net
+
+  locust-slave03:
+    build: ./locust
+    image: locust:01
+    container_name: locust-master
+    networks:
+      - sac20_net
+
+  locust-slave04:
+    build: ./locust
+    image: locust:01
+    container_name: locust-master
     networks:
       - sac20_net
 

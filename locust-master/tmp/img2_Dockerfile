@@ -1,0 +1,27 @@
+FROM python:3.6.6-alpine3.8
+
+CMD echo http://mirror.yandex.ru/mirrors/alpine/v3.5/main > /etc/apk/repositories
+CMD echo http://mirror.yandex.ru/mirrors/alpine/v3.5/community >> /etc/apk/repositories 
+
+CMD apk update 
+CMD apk add --no-cache 
+
+CMD apk --no-cache add g++
+CMD apk --no-cache add zeromq-dev 
+CMD pip install locustio pyzmq
+
+#RUN apk --no-cache add g++ \
+#      && apk --no-cache add zeromq-dev \
+#      && pip install locustio pyzmq
+
+CMD mkdir -p /usr/src/myapp
+COPY docker_start.sh docker_start.sh /usr/src/myapp/
+COPY locustfile.py /usr/src/myapp/
+WORKDIR /usr/src/myapp
+
+#COPY docker_start.sh docker_start.sh
+RUN chmod +x docker_start.sh
+
+EXPOSE 8089 5557 5558
+
+ENTRYPOINT ["./docker_start.sh"]

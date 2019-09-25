@@ -7,4 +7,5 @@ WORKDIR /usr/src/myapp/
 RUN pip install locustio
 
 #CMD locust --no-web -c 1000 -r 100
-CMD locust
+CMD locust --slave --master-host=engine-cont --master-port=5557
+
