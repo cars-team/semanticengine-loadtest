@@ -22,7 +22,7 @@ services:
           
 
   locust-master:
-    build: ./locust
+    build: ./locust-master
     image: locust:01
     container_name: locust-master
     ports:
@@ -32,28 +32,28 @@ services:
       - sac20_net
 
   locust-slave01:
-    build: ./locust
+    build: ./locust-slave
     image: locust:01
     container_name: locust-master
     networks:
       - sac20_net
 
   locust-slave02:
-    build: ./locust
+    build: ./locust-slave
     image: locust:01
     container_name: locust-master
     networks:
       - sac20_net
 
   locust-slave03:
-    build: ./locust
+    build: ./locust-slave
     image: locust:01
     container_name: locust-master
     networks:
       - sac20_net
 
   locust-slave04:
-    build: ./locust
+    build: ./locust-slave
     image: locust:01
     container_name: locust-master
     networks:
