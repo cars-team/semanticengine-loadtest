@@ -7,4 +7,7 @@ WORKDIR /usr/src/myapp/
 RUN pip install locustio
 
 #CMD locust --no-web -c 1000 -r 100
-CMD locust --master --master-bind-port=5557
+
+CMD locust --master --master-bind-port=5557 2> 2.txt 1> 1.txt
+
+#CMD ["tail", "-f", "/dev/null"]

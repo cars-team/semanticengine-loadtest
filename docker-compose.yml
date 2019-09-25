@@ -30,34 +30,44 @@ services:
       - 8089:8089
     networks:
       - sac20_net
-
+    depends_on:
+      - "engine"
+      
   locust-slave01:
     build: ./locust-slave
-    image: locust:01
+    image: locust:02
     container_name: locust-slave01
     networks:
       - sac20_net
+    depends_on:
+      - "locust-master"
 
   locust-slave02:
     build: ./locust-slave
-    image: locust:01
+    image: locust:02
     container_name: locust-slave02
     networks:
       - sac20_net
+    depends_on:
+      - "locust-master"
 
   locust-slave03:
     build: ./locust-slave
-    image: locust:01
+    image: locust:02
     container_name: locust-slave03
     networks:
       - sac20_net
+    depends_on:
+      - "locust-master"
 
   locust-slave04:
     build: ./locust-slave
-    image: locust:01
+    image: locust:02
     container_name: locust-slave04
     networks:
       - sac20_net
+    depends_on:
+      - "locust-master"
 
 networks:
   sac20_net:
