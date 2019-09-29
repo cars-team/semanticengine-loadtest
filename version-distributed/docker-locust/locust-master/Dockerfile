@@ -10,6 +10,6 @@ RUN pip install -e git://github.com/locustio/locust.git@master#egg=locustio
 
 #CMD locust --no-web -c 1000 -r 100
 
-#CMD locust --master --master-bind-port=5557 2> locust-master-stderr.txt 1> locust-master-stdout.txt
+CMD locust --master --master-bind-port=5557 2> locust-master-stderr.txt 1> locust-master-stdout.txt
 
-CMD ["tail", "-f", "/dev/null"]
+#CMD ["tail", "-f", "/dev/null"]
