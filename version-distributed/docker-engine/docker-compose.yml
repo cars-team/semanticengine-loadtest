@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+
+  engine:
+    build: ./engine
+    image: engine:01
+    container_name: engine-cont
+    ports:
+      - ${ENGINE_SPARQL_ENDPOINT_PORT}:9998
+      - ${ENGINE_API_PORT}:9876
+#      - 9998:9998
+#      - 9876:9876
+    networks:
+      - sac20_net
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
+        reservations:
+          cpus: '1'
+          memory: 4G
+
+networks:
+  sac20_net:
+    driver: bridge

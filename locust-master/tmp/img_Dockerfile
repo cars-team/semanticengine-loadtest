@@ -1,5 +1,0 @@
-FROM locustio/locust 
-ADD locustfile.py locustfile.py
-#RUN \
-#  locust -f /locustfile.py
-
