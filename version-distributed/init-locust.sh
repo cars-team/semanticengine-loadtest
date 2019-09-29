@@ -11,18 +11,16 @@ cp .env docker-engine/engine/.env
 cp .env docker-locust/locust-master/.env
 cp .env docker-locust/locust-slave/.env
 
-cd docker-engine/
+#cd docker-engine/
 #docker-compose stop
 #docker-compose rm -f
 #docker-compose build
 #docker-compose --compatibility up -d
-cd ..
-
-#docker-compose -f docker-compose-locust.yml build
+#cd ..
 
 cd docker-locust/
 docker-compose stop
 docker-compose rm -f
-#docker-compose build
-#docker-compose --compatibility up -d
+docker-compose build
+docker-compose --compatibility up -d
 cd ..
