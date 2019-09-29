@@ -10,8 +10,6 @@ services:
       - ${ENGINE_SPARQL_ENDPOINT_PORT}:9998
       - ${ENGINE_API_PORT}:10
 #      - ${ENGINE_RESTAGENT_API_PORT}:11
-#      - 9998:9998
-#      - 9876:9876
     networks:
       - sac20_net
     deploy:
@@ -23,6 +21,43 @@ services:
           cpus: '1'
           memory: 4G
 
+  engine-restagent01:
+    build: ./engine
+    image: engine:01
+    container_name: engine-restagent01
+    ports:
+#      - ${ENGINE_SPARQL_ENDPOINT_PORT}:9998
+#      - ${ENGINE_API_PORT}:10
+      - ${ENGINE_RESTAGENT_API_1_PORT}:11
+    networks:
+      - sac20_net
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '1'
+          memory: 2G
+          
+  engine-restagent02:
+    build: ./engine
+    image: engine:01
+    container_name: engine-restagent02
+    ports:
+#      - ${ENGINE_SPARQL_ENDPOINT_PORT}:9998
+#      - ${ENGINE_API_PORT}:10
+      - ${ENGINE_RESTAGENT_API_2_PORT}:11
+    networks:
+      - sac20_net
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '1'
+          memory: 2G
 networks:
   sac20_net:
     driver: bridge
