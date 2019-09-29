@@ -2,14 +2,14 @@ version: '3'
 
 services:
 
-  engine:
+  engine-cont:
     build: ./engine
     image: engine:01
     container_name: engine-cont
     ports:
       - ${ENGINE_SPARQL_ENDPOINT_PORT}:9998
       - ${ENGINE_API_PORT}:10
-      - ${ENGINE_RESTAGENT_API_PORT}:11
+#      - ${ENGINE_RESTAGENT_API_PORT}:11
 #      - 9998:9998
 #      - 9876:9876
     networks:
