@@ -8,7 +8,8 @@ services:
     container_name: engine-cont
     ports:
       - ${ENGINE_SPARQL_ENDPOINT_PORT}:9998
-      - ${ENGINE_API_PORT}:9876
+      - ${ENGINE_API_PORT}:10
+      - ${ENGINE_RESTAGENT-API_PORT}:11
 #      - 9998:9998
 #      - 9876:9876
     networks:
