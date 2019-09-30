@@ -8,7 +8,7 @@ services:
     container_name: engine-cont
     ports:
       - ${ENGINE_SPARQL_ENDPOINT_PORT}:9998
-      - ${ENGINE_API_PORT}:10
+      - ${ENGINE_API_PORT}:9876
 #      - ${ENGINE_RESTAGENT_API_PORT}:11
     networks:
       - sac20_net
@@ -28,7 +28,7 @@ services:
     ports:
 #      - ${ENGINE_SPARQL_ENDPOINT_PORT}:9998
 #      - ${ENGINE_API_PORT}:10
-      - ${ENGINE_RESTAGENT_API_1_PORT}:11
+      - ${ENGINE_RESTAGENT_API_1_PORT}:9877
     networks:
       - sac20_net
     deploy:
@@ -47,7 +47,7 @@ services:
     ports:
 #      - ${ENGINE_SPARQL_ENDPOINT_PORT}:9998
 #      - ${ENGINE_API_PORT}:10
-      - ${ENGINE_RESTAGENT_API_2_PORT}:11
+      - ${ENGINE_RESTAGENT_API_2_PORT}:9877
     networks:
       - sac20_net
     deploy:
