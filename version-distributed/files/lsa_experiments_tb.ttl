@@ -4,9 +4,10 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.gauss.it/lsaex/> .
+@prefix lsa:<http://www.gauss.it/lsa/> .
+@base <http://www.gauss.it/lsa/> .
 
-<http://www.gauss.it/lsaex/> rdf:type owl:Ontology .
+<http://www.gauss.it/lsa/> rdf:type owl:Ontology .
 
 #################################################################
 #    Object Properties
@@ -119,7 +120,8 @@
 
 
 ###  http://www.w3.org/2002/07/owl#topObjectProperty
-owl:topObjectProperty owl:inverseOf owl:topObjectProperty ;
+owl:topObjectProperty rdf:type owl:ObjectProperty ;
+                      owl:inverseOf owl:topObjectProperty ;
                       rdf:type owl:SymmetricProperty ,
                                owl:TransitiveProperty .
 
@@ -279,6 +281,14 @@ owl:topObjectProperty owl:inverseOf owl:topObjectProperty ;
 ###  http://www.gauss.it/lsa/requestJSON
 <http://www.gauss.it/lsa/requestJSON> rdf:type owl:DatatypeProperty .
 
+###  http://www.gauss.it/lsaex/lsa:className
+<http://www.gauss.it/lsa/className> rdf:type owl:DatatypeProperty ;
+               rdfs:domain <http://www.gauss.it/lsa/JavaAction> .
+
+###  http://www.gauss.it/lsaex/lsa:expires
+<http://www.gauss.it/lsa/:expires> rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:dateTime .
+
 
 ###  http://www.ing.unisannio.it/ding/semantics/OWL-C.owl#hasStringValue
 <http://www.ing.unisannio.it/ding/semantics/OWL-C.owl#hasStringValue> rdf:type owl:DatatypeProperty ;
@@ -307,47 +317,6 @@ owl:topObjectProperty owl:inverseOf owl:topObjectProperty ;
 <http://example.museum.gauss.it/ThermalStimulus> rdf:type owl:Class ;
                                                  rdfs:subClassOf <http://www.w3.org/ns/ssn/Stimulus> .
 
-
-###  http://experiments.gauss.it/lsa/HumidexActionableBehavior
-<http://experiments.gauss.it/lsa/HumidexActionableBehavior> rdf:type owl:Class ;
-                                                            rdfs:subClassOf <http://www.gauss.it/lsa/ActionableBehavior> .
-
-
-###  http://experiments.gauss.it/lsa/HumidexLogicalSensor
-<http://experiments.gauss.it/lsa/HumidexLogicalSensor> rdf:type owl:Class ;
-                                                       rdfs:subClassOf <http://www.gauss.it/lsa/LogicalSensor> .
-
-
-###  http://experiments.gauss.it/lsa/HumiditySensor
-<http://experiments.gauss.it/lsa/HumiditySensor> rdf:type owl:Class ;
-                                                 rdfs:subClassOf <http://www.w3.org/ns/sosa/Sensor> .
-
-
-###  http://experiments.gauss.it/lsa/ObservableHumidex
-<http://experiments.gauss.it/lsa/ObservableHumidex> rdf:type owl:Class ;
-                                                    rdfs:subClassOf <http://www.w3.org/ns/sosa/ObservableProperty> .
-
-
-###  http://experiments.gauss.it/lsa/ObservableHumidity
-<http://experiments.gauss.it/lsa/ObservableHumidity> rdf:type owl:Class ;
-                                                     rdfs:subClassOf <http://www.w3.org/ns/sosa/ObservableProperty> .
-
-
-###  http://experiments.gauss.it/lsa/ObservableTemperature
-<http://experiments.gauss.it/lsa/ObservableTemperature> rdf:type owl:Class ;
-                                                        rdfs:subClassOf <http://www.w3.org/ns/sosa/ObservableProperty> .
-
-
-###  http://experiments.gauss.it/lsa/TemperatureObservation
-<http://experiments.gauss.it/lsa/TemperatureObservation> rdf:type owl:Class ;
-                                                         rdfs:subClassOf <http://www.w3.org/ns/sosa/Observation> .
-
-
-###  http://experiments.gauss.it/lsa/TemperatureSensor
-<http://experiments.gauss.it/lsa/TemperatureSensor> rdf:type owl:Class ;
-                                                    rdfs:subClassOf <http://www.w3.org/ns/sosa/Sensor> .
-
-
 ###  http://purl.org/vocommons/voaf#Vocabulary
 <http://purl.org/vocommons/voaf#Vocabulary> rdf:type owl:Class .
 
@@ -372,6 +341,15 @@ owl:topObjectProperty owl:inverseOf owl:topObjectProperty ;
 ###  http://www.gauss.it/lsa/AddTTLAction
 <http://www.gauss.it/lsa/AddTTLAction> rdf:type owl:Class ;
                                        rdfs:subClassOf <http://www.gauss.it/lsa/Actionable> .
+
+###  http://www.gauss.it/lsa/restAction
+lsa:restAction rdf:type owl:NamedIndividual, <http://www.gauss.it/lsa/ActionableType>, <http://www.gauss.it/lsa/Type> .
+
+###  http://www.gauss.it/lsa/sparqlQueryAction
+lsa:sparqlQueryAction rdf:type owl:NamedIndividual, <http://www.gauss.it/lsa/ActionableType>, <http://www.gauss.it/lsa/Type> .
+
+###  http://www.gauss.it/lsa/sparqlUpdateAction
+lsa:sparqlUpdateAction rdf:type owl:NamedIndividual, <http://www.gauss.it/lsa/ActionableType>, <http://www.gauss.it/lsa/Type> .
 
 
 ###  http://www.gauss.it/lsa/BindingType
@@ -621,3 +599,41 @@ owl:topObjectProperty owl:inverseOf owl:topObjectProperty ;
 
 ###  http://www.w3.org/ns/ssn/System
 <http://www.w3.org/ns/ssn/System> rdf:type owl:Class .
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.gauss.it/lsa/addTTLActionType
+<http://www.gauss.it/lsa/addTTLActionType> rdf:type owl:NamedIndividual, <http://www.gauss.it/lsa/ActionType> .
+
+###  http://www.gauss.it/lsa/attached
+<http://www.gauss.it/lsa/attached> rdf:type owl:NamedIndividual, <http://www.gauss.it/lsa/BindingType>, <http://www.gauss.it/lsa/Type> .
+
+###  http://www.gauss.it/lsa/detached
+<http://www.gauss.it/lsa/detached> rdf:type owl:NamedIndividual, <http://www.gauss.it/lsa/BindingType>, <http://www.gauss.it/lsa/Type> .
+
+###  http://www.gauss.it/lsa/faultyState
+<http://www.gauss.it/lsa/faultyState> rdf:type owl:NamedIndividual, <http://www.gauss.it/lsa/Type>, <http://www.gauss.it/lsa/WorkingType> .
+
+###  http://www.gauss.it/lsa/inactive
+<http://www.gauss.it/lsa/inactive> rdf:type owl:NamedIndividual, <http://www.gauss.it/lsa/BindingType>, <http://www.gauss.it/lsa/Type> .
+
+###  http://www.gauss.it/lsa/javaActionType
+<http://www.gauss.it/lsa/javaActionType> rdf:type owl:NamedIndividual, <http://www.gauss.it/lsa/ActionType> .
+
+###  http://www.gauss.it/lsa/normalState
+<http://www.gauss.it/lsa/normalState> rdf:type owl:NamedIndividual, <http://www.gauss.it/lsa/Type>, <http://www.gauss.it/lsa/WorkingType> .
+
+###  http://www.gauss.it/lsa/restActionType
+<http://www.gauss.it/lsa/restActionType> rdf:type owl:NamedIndividual, <http://www.gauss.it/lsa/ActionType> .
+
+###  http://www.gauss.it/lsa/sparqlConstructActionType
+<http://www.gauss.it/lsa/sparqlConstructActionType> rdf:type owl:NamedIndividual, <http://www.gauss.it/lsa/ActionType> .
+
+###  http://www.gauss.it/lsa/sparqlQueryActionType
+<http://www.gauss.it/lsa/sparqlQueryActionType> rdf:type owl:NamedIndividual, <http://www.gauss.it/lsa/ActionType> .
+
+###  http://www.gauss.it/lsa/sparqlUpdateActionType
+<http://www.gauss.it/lsa/sparqlUpdateActionType> rdf:type owl:NamedIndividual, <http://www.gauss.it/lsa/ActionType> .
+
