@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+
+  engine-restagent01:
+    build: ../docker-engine/engine
+    image: engine:01
+    container_name: engine-restagent01
+    ports:
+#      - ${ENGINE_SPARQL_ENDPOINT_PORT}:9998
+#      - ${ENGINE_API_PORT}:10
+      - ${RESTAGENT_API_1_PORT}:9877
+    networks:
+      - sac20_net_restagent
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '1'
+          memory: 2G
+          
+  engine-restagent02:
+    build: ../docker-engine/engine
+    image: engine:01
+    container_name: engine-restagent02
+    ports:
+#      - ${ENGINE_SPARQL_ENDPOINT_PORT}:9998
+#      - ${ENGINE_API_PORT}:10
+      - ${RESTAGENT_API_2_PORT}:9877
+    networks:
+      - sac20_net_restagent
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '1'
+          memory: 2G
+
+networks:
+  sac20_net_restagent:
+    driver: bridge

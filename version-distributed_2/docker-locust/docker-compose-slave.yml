@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  locust-slave01:
+    build: ./locust-slave
+    image: locust:02
+    container_name: locust-slave01
+    networks:
+      - sac20_net_locust
+      
+networks:
+  sac20_net_locust:
+    driver: bridge

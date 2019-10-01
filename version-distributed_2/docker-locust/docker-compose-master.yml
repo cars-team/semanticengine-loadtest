@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  locust-master:
+    build: ./locust-master
+    image: locust:01
+    container_name: locust-master
+    ports:
+      - ${LOCUST_WEB_PORT}:8089
+      - ${LOCUST_BIND_PORT}:5557
+    networks:
+      - sac20_net_locust
+
+networks:
+  sac20_net_locust:
+    driver: bridge

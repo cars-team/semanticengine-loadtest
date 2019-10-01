@@ -1,10 +1,22 @@
 */*.env
-docker-engine/engine/lsa_experiments_ab.ttl
-docker-engine/engine/lsa_experiments_tb.ttl
-docker-engine/engine/semanticengine-1.0.1-SNAPSHOT-jar-with-dependencies.jar
 docker-engine/*.env
+docker-engine/engine/*.ttl
+docker-engine/engine/*.jar
+docker-engine/engine/*.env
 
 docker-locust/*/locustfile.py
 docker-locust/*.env
+docker-locust/locust-master/output.data
+docker-locust/locust-master/.env
+docker-locust/locust-master/__pycache__/*
+docker-locust/locust-master/locustfile.py
+docker-locust/locust-slave/output.data
+docker-locust/locust-slave/.env
+docker-locust/locust-slave/__pycache__/*
+docker-locust/locust-slave/locustfile.py
 
+docker-restagent/*.env
 
+files/NEW_locustfile.py
+files/OLD_locustfile.py
+files/OLD_semanticengine-1.0.1-SNAPSHOT-jar-with-dependencies.jar
