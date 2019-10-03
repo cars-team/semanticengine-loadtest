@@ -1,4 +1,3 @@
-*/*.env
 docker-engine/*.env
 docker-engine/engine/*.ttl
 docker-engine/engine/*.jar

@@ -1,7 +1,3 @@
 version-local/commands.txt
 version-local/sac-docker.tgz
-version-local/locust-master/output.data
-version-local/locust-master/prova
-version-local/locustmaster/__pycache__
-version-local/locust-master/tmp
 _new-temp/*
