@@ -8,6 +8,7 @@ from locust import HttpLocust, TaskSet, events
 import threading
 import atexit
 #import json
+import re
 
 class LoaderBehavior(TaskSet):
 #	@task
@@ -17,8 +18,8 @@ class LoaderBehavior(TaskSet):
 	def observation_temp(l):
 		jObs = {
 			"madeBySensor": "http://experiments.gauss.it/lsa/livingTemperatureSensor",
-			"observedProperty": "http://experiments.gauss.it/lsa/livingTemperature",
-			"hasFeatureOfInterest": "http://experiments.gauss.it/lsa/living",
+			"observedProperty": "http://experiments.gauss.it/lsa/livingTemperature_666",
+			"hasFeatureOfInterest": "http://experiments.gauss.it/lsa/living_666",
 			"hasSimpleResult": "22"
 		}
 		head = {'content-type': 'application/json'}
@@ -28,8 +29,8 @@ class LoaderBehavior(TaskSet):
 	def observation_hum(l):
 		jObs = {
 			"madeBySensor": "http://experiments.gauss.it/lsa/livingHumiditySensor",
-			"observedProperty": "http://experiments.gauss.it/lsa/livingHumidity",
-			"hasFeatureOfInterest": "http://experiments.gauss.it/lsa/living",
+			"observedProperty": "http://experiments.gauss.it/lsa/livingHumidity_999",
+			"hasFeatureOfInterest": "http://experiments.gauss.it/lsa/living_999",
 			"hasSimpleResult": "68"
 		}
 		head = {'content-type': 'application/json'}
@@ -40,11 +41,29 @@ class LoaderBehavior(TaskSet):
 	tasks = { observation_temp }
 
 class SemanticEngineLoader(HttpLocust):
+	def parseEnv(f):
+		myvars = {}
+		with open(f) as myfile:
+			for line in myfile:
+				#name, var = line.partition("=")[::2]
+				#myvars[name.strip()] = float(var)
+				temp = line.split('=')
+				if len(temp) < 2:
+					continue
+				key,val = line.split('=')
+				myvars[key] = re.sub(r"\s+", '', val)
+		return myvars
+
+	f = '.env'
+	res = parseEnv(f)
+	
 	task_set = LoaderBehavior
 	#host = "http://127.0.0.1:9876/engineapi"
-	host = "http://engine-cont:9876/engineapi"
-	min_wait = 50
-	max_wait = 100
+	#host = "http://engine-cont:9876/engineapi"
+	host = "http://" + str(res['ENGINE_IP_ADDR']) + ":" + str(res['ENGINE_API_PORT']) + "/engineapi"
+	
+	min_wait = int(res['LOCUST_MIN_WAIT'])
+	max_wait = int(res['LOCUST_MAX_WAIT'])
 
 	def __init__(self):
 		super(SemanticEngineLoader, self).__init__()

@@ -90,7 +90,7 @@ lsaex:livingHumidexLogicalSensor rdf:type owl:NamedIndividual, <http://experimen
 lsaex:livingHumidexSoftwareProcedure rdf:type owl:NamedIndividual, <http://www.gauss.it/lsa/SoftwareProcedure>, <http://www.gauss.it/lsa/lsaex:HumidexSoftwareProcedure>,
 	<http://www.w3.org/ns/sosa/Procedure>;
 	<http://www.gauss.it/lsa/hasBehavior> <http://experiments.gauss.it/lsa/livingHumidexActionableBehavior>;
-	<http://www.w3.org/ns/ssn/hasInput> <http://experiments.gauss.it/lsa/livingHumidity>, <http://experiments.gauss.it/lsa/livingTemperature>;
+	<http://www.w3.org/ns/ssn/hasInput> <http://experiments.gauss.it/lsa/livingHumidity1>, <http://experiments.gauss.it/lsa/livingTemperature1>;
 	<http://www.w3.org/ns/ssn/implementedBy> <http://experiments.gauss.it/lsa/livingHumidexLogicalSensor> .
 
 ###  http://experiments.gauss.it/lsa/livingHumidity
