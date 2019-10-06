@@ -175,7 +175,8 @@ lsaex:humidexHeavyRemoteFullRestAction-1 rdf:type owl:NamedIndividual, lsa:Actio
 	lsa:isActionSpecificationOf lsaex:livingHumidexActionableBehavior;
 	lsa:hasIndex "1"^^xsd:positiveInteger;
 	lsa:hasMethod "POST";
-	lsa:hasURL "http://130.136.131.202:81/engineapi/restagents/humidexheavyfull;http://130.136.131.202:82/engineapi/restagents/humidexheavyfull;http://130.136.131.202:83/engineapi/restagents/humidexheavyfull;http://130.136.131.202:84/engineapi/restagents/humidexheavyfull";
+#	lsa:hasURL "http://130.136.131.202:81/engineapi/restagents/humidexheavyfull;http://130.136.131.202:82/engineapi/restagents/humidexheavyfull;http://130.136.131.202:83/engineapi/restagents/humidexheavyfull;http://130.136.131.202:84/engineapi/restagents/humidexheavyfull";
+	lsa:hasURL "http://130.136.131.202:81/engineapi/restagents/humidexheavyfull";
 	lsa:requestJSON """
 { 
 \"sparqlEndpoint\" : \"${_sparqlEndpoint}\" , 
