@@ -18,8 +18,8 @@ class LoaderBehavior(TaskSet):
 	def observation_temp(l):
 		jObs = {
 			"madeBySensor": "http://experiments.gauss.it/lsa/livingTemperatureSensor",
-			"observedProperty": "http://experiments.gauss.it/lsa/livingTemperature_666",
-			"hasFeatureOfInterest": "http://experiments.gauss.it/lsa/living_666",
+			"observedProperty": "http://experiments.gauss.it/lsa/livingTemperature",
+			"hasFeatureOfInterest": "http://experiments.gauss.it/lsa/living",
 			"hasSimpleResult": "22"
 		}
 		head = {'content-type': 'application/json'}
@@ -29,8 +29,8 @@ class LoaderBehavior(TaskSet):
 	def observation_hum(l):
 		jObs = {
 			"madeBySensor": "http://experiments.gauss.it/lsa/livingHumiditySensor",
-			"observedProperty": "http://experiments.gauss.it/lsa/livingHumidity_999",
-			"hasFeatureOfInterest": "http://experiments.gauss.it/lsa/living_999",
+			"observedProperty": "http://experiments.gauss.it/lsa/livingHumidity",
+			"hasFeatureOfInterest": "http://experiments.gauss.it/lsa/living",
 			"hasSimpleResult": "68"
 		}
 		head = {'content-type': 'application/json'}
