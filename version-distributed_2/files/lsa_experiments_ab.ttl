@@ -175,7 +175,7 @@ lsaex:humidexHeavyRemoteFullRestAction-1 rdf:type owl:NamedIndividual, lsa:Actio
 	lsa:isActionSpecificationOf lsaex:livingHumidexActionableBehavior;
 	lsa:hasIndex "1"^^xsd:positiveInteger;
 	lsa:hasMethod "POST";
-	lsa:hasURL "http://192.168.1.99:9877/engineapi/restagents/humidexheavyfull";
+	lsa:hasURL "http://130.136.131.202:81/engineapi/restagents/humidexheavyfull;http://130.136.131.202:82/engineapi/restagents/humidexheavyfull;http://130.136.131.202:83/engineapi/restagents/humidexheavyfull;http://130.136.131.202:84/engineapi/restagents/humidexheavyfull";
 	lsa:requestJSON """
 { 
 \"sparqlEndpoint\" : \"${_sparqlEndpoint}\" , 
@@ -271,7 +271,7 @@ lsaex:livingHumidexActionableBehavior rdf:type owl:NamedIndividual, lsaex:Humide
 #	lsa:hasActionSpecification lsaex:noopJavaAction-1.
 
 # Java heavy solution
-	lsa:hasActionSpecification lsaex:humidexHeavyJavaAction-1.
+#	lsa:hasActionSpecification lsaex:humidexHeavyJavaAction-1.
 
 # Fully SPARQL solution
 #	lsa:hasActionSpecification lsaex:humidexSparqlUpdateAction-1.
@@ -283,7 +283,7 @@ lsaex:livingHumidexActionableBehavior rdf:type owl:NamedIndividual, lsaex:Humide
 #	lsa:hasActionSpecification lsaex:humidexHeavyFullRestAction-1.
 
 # Fully REST REMOTE heavy solution
-#	lsa:hasActionSpecification lsaex:humidexHeavyRemoteFullRestAction-1.
+	lsa:hasActionSpecification lsaex:humidexHeavyRemoteFullRestAction-1.
 
 # REST + SPARQL solution
 #	lsa:hasActionSpecification lsaex:humidexSparqlQueryAction-1;
