@@ -271,13 +271,13 @@ lsaex:livingHumidexActionableBehavior rdf:type owl:NamedIndividual, lsaex:Humide
 #	lsa:hasActionSpecification lsaex:noopJavaAction-1.
 
 # Java heavy solution
-#	lsa:hasActionSpecification lsaex:humidexHeavyJavaAction-1.
+	lsa:hasActionSpecification lsaex:humidexHeavyJavaAction-1.
 
 # Fully SPARQL solution
 #	lsa:hasActionSpecification lsaex:humidexSparqlUpdateAction-1.
 
 # Fully REST solution
-	lsa:hasActionSpecification lsaex:humidexFullRestAction-1.
+#	lsa:hasActionSpecification lsaex:humidexFullRestAction-1.
 
 # Fully REST heavy solution
 #	lsa:hasActionSpecification lsaex:humidexHeavyFullRestAction-1.
