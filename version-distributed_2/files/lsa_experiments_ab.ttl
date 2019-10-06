@@ -90,7 +90,7 @@ lsaex:livingHumidexLogicalSensor rdf:type owl:NamedIndividual, <http://experimen
 lsaex:livingHumidexSoftwareProcedure rdf:type owl:NamedIndividual, <http://www.gauss.it/lsa/SoftwareProcedure>, <http://www.gauss.it/lsa/lsaex:HumidexSoftwareProcedure>,
 	<http://www.w3.org/ns/sosa/Procedure>;
 	<http://www.gauss.it/lsa/hasBehavior> <http://experiments.gauss.it/lsa/livingHumidexActionableBehavior>;
-	<http://www.w3.org/ns/ssn/hasInput> <http://experiments.gauss.it/lsa/livingHumidity1>, <http://experiments.gauss.it/lsa/livingTemperature1>;
+	<http://www.w3.org/ns/ssn/hasInput> <http://experiments.gauss.it/lsa/livingHumidity>, <http://experiments.gauss.it/lsa/livingTemperature>;
 	<http://www.w3.org/ns/ssn/implementedBy> <http://experiments.gauss.it/lsa/livingHumidexLogicalSensor> .
 
 ###  http://experiments.gauss.it/lsa/livingHumidity
@@ -133,14 +133,49 @@ lsaex:humidexJavaAction-1 rdf:type owl:NamedIndividual, lsa:Actionable, lsa:Rest
 	lsa:isActionSpecificationOf lsaex:livingHumidexActionableBehavior;
 	lsa:hasIndex "1"^^xsd:positiveInteger;
 	lsa:className "it.gaussproject.semanticengine.experiments.agents.java.HumidexJavaAction" .
-#	lsa:className "it.gaussproject.semanticengine.experiments.agents.java.NoopJavaAction" .
+
+lsaex:humidexHeavyJavaAction-1 rdf:type owl:NamedIndividual, lsa:Actionable, lsa:RestAction;
+	lsa:hasActionType lsa:javaActionType;
+	lsa:isActionSpecificationOf lsaex:livingHumidexActionableBehavior;
+	lsa:hasIndex "1"^^xsd:positiveInteger;
+	lsa:className "it.gaussproject.semanticengine.experiments.agents.java.HumidexHeavyJavaAction" .
+
+lsaex:noopJavaAction-1 rdf:type owl:NamedIndividual, lsa:Actionable, lsa:RestAction;
+	lsa:hasActionType lsa:javaActionType;
+	lsa:isActionSpecificationOf lsaex:livingHumidexActionableBehavior;
+	lsa:hasIndex "1"^^xsd:positiveInteger;
+	lsa:className "it.gaussproject.semanticengine.experiments.agents.java.NoopJavaAction" .
 
 lsaex:humidexFullRestAction-1 rdf:type owl:NamedIndividual, lsa:Actionable, lsa:RestAction;
 	lsa:hasActionType lsa:restActionType;
 	lsa:isActionSpecificationOf lsaex:livingHumidexActionableBehavior;
 	lsa:hasIndex "1"^^xsd:positiveInteger;
 	lsa:hasMethod "POST";
-	lsa:hasURL "http://localhost:9877/engineapi/restagents/humidexfull;http://localhost:9877/engineapi/restagents/humidexfull";
+	lsa:hasURL "http://localhost:9877/engineapi/restagents/humidexfull";
+	lsa:requestJSON """
+{ 
+\"sparqlEndpoint\" : \"${_sparqlEndpoint}\" , 
+\"apiEndpoint\" : \"${_apiEndpoint}\"
+}""" .
+
+lsaex:humidexHeavyFullRestAction-1 rdf:type owl:NamedIndividual, lsa:Actionable, lsa:RestAction;
+	lsa:hasActionType lsa:restActionType;
+	lsa:isActionSpecificationOf lsaex:livingHumidexActionableBehavior;
+	lsa:hasIndex "1"^^xsd:positiveInteger;
+	lsa:hasMethod "POST";
+	lsa:hasURL "http://localhost:9877/engineapi/restagents/humidexheavyfull";
+	lsa:requestJSON """
+{ 
+\"sparqlEndpoint\" : \"${_sparqlEndpoint}\" , 
+\"apiEndpoint\" : \"${_apiEndpoint}\"
+}""" .
+
+lsaex:humidexHeavyRemoteFullRestAction-1 rdf:type owl:NamedIndividual, lsa:Actionable, lsa:RestAction;
+	lsa:hasActionType lsa:restActionType;
+	lsa:isActionSpecificationOf lsaex:livingHumidexActionableBehavior;
+	lsa:hasIndex "1"^^xsd:positiveInteger;
+	lsa:hasMethod "POST";
+	lsa:hasURL "http://192.168.1.99:9877/engineapi/restagents/humidexheavyfull";
 	lsa:requestJSON """
 { 
 \"sparqlEndpoint\" : \"${_sparqlEndpoint}\" , 
@@ -230,13 +265,25 @@ lsaex:livingHumidexActionableBehavior rdf:type owl:NamedIndividual, lsaex:Humide
 	lsa:isBehaviorOf lsaex:livingHumidexSoftwareProcedure;
 
 # Java solution
-	lsa:hasActionSpecification lsaex:humidexJavaAction-1.
+#	lsa:hasActionSpecification lsaex:humidexJavaAction-1.
+
+# Java NOOP solution
+#	lsa:hasActionSpecification lsaex:noopJavaAction-1.
+
+# Java heavy solution
+#	lsa:hasActionSpecification lsaex:humidexHeavyJavaAction-1.
 
 # Fully SPARQL solution
 #	lsa:hasActionSpecification lsaex:humidexSparqlUpdateAction-1.
 
 # Fully REST solution
 #	lsa:hasActionSpecification lsaex:humidexFullRestAction-1.
+
+# Fully REST heavy solution
+	lsa:hasActionSpecification lsaex:humidexHeavyFullRestAction-1.
+
+# Fully REST REMOTE heavy solution
+#	lsa:hasActionSpecification lsaex:humidexHeavyRemoteFullRestAction-1.
 
 # REST + SPARQL solution
 #	lsa:hasActionSpecification lsaex:humidexSparqlQueryAction-1;
