@@ -5,8 +5,9 @@ COPY locustfile.py /usr/src/myapp/
 COPY .env /usr/src/myapp/
 WORKDIR /usr/src/myapp/
 
-RUN pip install -e git://github.com/locustio/locust.git@master#egg=locustio
-#RUN pip install locustio
+#RUN pip install -e git://github.com/locustio/locust.git@master#egg=locustio
+RUN pip install locustio
+RUN pip install locust-plugins
 
 #CMD locust --no-web -c 1000 -r 100
 

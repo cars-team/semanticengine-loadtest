@@ -22,5 +22,6 @@ cd docker-locust/
 docker-compose stop
 docker-compose rm -f
 docker-compose build
-docker-compose --compatibility up -d
+#docker-compose --compatibility up -d
+docker-compose up -d
 cd ..
